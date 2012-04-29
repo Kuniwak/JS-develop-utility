@@ -28,11 +28,13 @@ README_JA_COPY_PATH = "#{ROOT_DIR_PATH}/README_Ja.textile"
 
 repo_name = nil
 repo_name_ja = nil
+force = false
 
 # Arguments processing
 opt = OptionParser.new()
 opt.on('-n <NAME>', '--name <NAME>', 'Repository name.') {|v| repo_name = v}
 opt.on('-j <NAME_Ja>', '--name_ja <NAME>', 'Repository name in Japanese.') {|v| repo_name_ja = v}
+opt.on('-f', '--force', 'Over write if Readme is exists.') {force = true}
 argv = opt.parse!(ARGV)
 
 if !repo_name
@@ -42,7 +44,7 @@ if !repo_name_ja
 	raise "Repository name in Japanese is invalied: #{repo_name_ja}"
 end
 
-def create_readme(path, new_path, repo_name, repo_name_ja)
+def create_readme(path, new_path, repo_name, repo_name_ja, force)
 	# Repository directory name is escaped " " to "-"
 	repo_dir_name = repo_name.gsub(/ /, '-')
 	readme_tmp = []
@@ -55,14 +57,16 @@ def create_readme(path, new_path, repo_name, repo_name_ja)
 			readme_tmp.push(new_line)
 		end
 	end
-	File.open(new_path, 'w+') do |readme|
-		readme.puts(readme_tmp.join(""))
+	if !File.exists?(new_path) or force
+		File.open(new_path, 'w+') do |readme|
+			readme.puts(readme_tmp.join(""))
+		end
 	end
 end
 
 create_readme(README_FILE_PATH, README_COPY_PATH, repo_name, repo_name_ja)
 create_readme(README_JA_FILE_PATH, README_JA_COPY_PATH, repo_name, repo_name_ja)
 
-if !File.symlink?(GITIGNORE_COPY_PATH)
+if !File.exists?(GITIGNORE_COPY_PATH)
 	File.symlink(GITIGNORE_FILE_PATH, GITIGNORE_COPY_PATH)
 end
