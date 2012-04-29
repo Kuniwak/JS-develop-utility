@@ -16,15 +16,15 @@ ROOT_DIR_PATH = "#{SCRIPT_DIR_PATH}/../"
 GITIGNORE_FILE_PATH = "#{SCRIPT_DIR_PATH}/files/_gitignore"
 
 # Location of Readme symbolic links
-GITIGNORE_LINK_PATH = "#{ROOT_DIR_PATH}/.gitignore"
+GITIGNORECOPY_PATH = "#{ROOT_DIR_PATH}/.gitignore"
 
 # Location of Readme files
 README_FILE_PATH = "#{SCRIPT_DIR_PATH}/files/README.textile"
 README_JA_FILE_PATH = "#{SCRIPT_DIR_PATH}/files/README_Ja.textile"
 
 # Location of Readme symbolic links
-README_LINK_PATH = "#{ROOT_DIR_PATH}/README.textile"
-README_JA_LINK_PATH = "#{ROOT_DIR_PATH}/README_Ja.textile"
+READMECOPY_PATH = "#{ROOT_DIR_PATH}/README.textile"
+README_JACOPY_PATH = "#{ROOT_DIR_PATH}/README_Ja.textile"
 
 repo_name = nil
 repo_name_ja = nil
@@ -60,9 +60,9 @@ def create_readme(path, new_path, repo_name, repo_name_ja)
 	end
 end
 
-create_readme(README_FILE_PATH, repo_name, repo_name_ja)
-create_readme(README_JA_FILE_PATH, repo_name, repo_name_ja)
+create_readme(README_FILE_PATH, READMECOPY_PATH, repo_name, repo_name_ja)
+create_readme(README_JA_FILE_PATH, README_JACOPY_PATH, repo_name, repo_name_ja)
 
-if !File.symlink?(GITIGNORE_LINK_PATH)
-	File.symlink(GITIGNORE_FILE_PATH, GITIGNORE_LINK_PATH)
+if !File.symlink?(GITIGNORECOPY_PATH)
+	File.symlink(GITIGNORE_FILE_PATH, GITIGNORECOPY_PATH)
 end
