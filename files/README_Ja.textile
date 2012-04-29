@@ -1,0 +1,10 @@
+h1. __REPO_NAME_JA__
+
+
+h2. 概要
+
+
+h2. API リファレンス
+
+"Wiki":https://github.com/OrgaChem/__REPO_DIR__/wiki/API-%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9(API-Reference-for-Japanese) を参照してください。
+英語版は "こちら":https://github.com/OrgaChem/__REPO_DIR__/wiki/API-Reference 。
