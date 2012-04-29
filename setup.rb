@@ -42,7 +42,7 @@ if !repo_name_ja
 	raise "Repository name in Japanese is invalied: #{repo_name_ja}"
 end
 
-def replace_parameters(path, repo_name, repo_name_ja)
+def create_readme(path, new_path, repo_name, repo_name_ja)
 	# Repository directory name is escaped " " to "-"
 	repo_dir_name = repo_name.gsub(/ /, '-')
 	readme_tmp = []
@@ -55,22 +55,14 @@ def replace_parameters(path, repo_name, repo_name_ja)
 			readme_tmp.push(new_line)
 		end
 	end
-	File.open(path, 'w') do |readme|
+	File.open(new_path, 'w+') do |readme|
 		readme.puts(readme_tmp.join(""))
 	end
 end
 
-replace_parameters(README_FILE_PATH, repo_name, repo_name_ja)
-if !File.symlink?(README_LINK_PATH)
-	File.symlink(README_FILE_PATH, README_LINK_PATH)
-end
-
-replace_parameters(README_JA_FILE_PATH, repo_name, repo_name_ja)
-if !File.symlink?(README_JA_LINK_PATH)
-	File.symlink(README_JA_FILE_PATH, README_JA_LINK_PATH)
-end
+create_readme(README_FILE_PATH, repo_name, repo_name_ja)
+create_readme(README_JA_FILE_PATH, repo_name, repo_name_ja)
 
 if !File.symlink?(GITIGNORE_LINK_PATH)
 	File.symlink(GITIGNORE_FILE_PATH, GITIGNORE_LINK_PATH)
 end
-
