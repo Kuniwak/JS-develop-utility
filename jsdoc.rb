@@ -23,4 +23,4 @@ OUTPUT_DIR = '../docs'
 
 cmd = "ruby #{JSDOC_UTIL_PATH} -i #{INPUT_DIR} -o #{OUTPUT_DIR} #{ARGV.join(" ")}"
 puts cmd
-#`cmd`
+`cmd`
