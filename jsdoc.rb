@@ -18,8 +18,8 @@ ROOT_DIR_PATH = SCRIPT_DIR_PATH + "/.."
 # Absolute path of JsDoc utility directory
 JSDOC_UTIL_PATH = "#{SCRIPT_DIR_PATH}/jsdoc/jsdoc.rb"
 
-INPUT_DIR = '../'
-OUTPUT_DIR = '../docs'
+INPUT_DIR = '../../'
+OUTPUT_DIR = '../../docs'
 
 cmd = "ruby #{JSDOC_UTIL_PATH} -i #{INPUT_DIR} -o #{OUTPUT_DIR} #{ARGV.join(" ")}"
 puts cmd
