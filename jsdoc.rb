@@ -21,4 +21,6 @@ JSDOC_UTIL_PATH = "#{SCRIPT_DIR_PATH}/jsdoc/jsdoc.rb"
 INPUT_DIR = '../'
 OUTPUT_DIR = '../docs'
 
-`ruby #{JSDOC_UTIL_PATH} -i #{INPUT_DIR} -o #{OUTPUT_DIR}`
+cmd = "ruby #{JSDOC_UTIL_PATH} -i #{INPUT_DIR} -o #{OUTPUT_DIR} #{ARGV.join(" ")}"
+puts cmd
+#`cmd`
