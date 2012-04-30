@@ -64,8 +64,8 @@ def create_readme(path, new_path, repo_name, repo_name_ja, force)
 	end
 end
 
-create_readme(README_FILE_PATH, README_COPY_PATH, repo_name, repo_name_ja)
-create_readme(README_JA_FILE_PATH, README_JA_COPY_PATH, repo_name, repo_name_ja)
+create_readme(README_FILE_PATH, README_COPY_PATH, repo_name, repo_name_ja, force)
+create_readme(README_JA_FILE_PATH, README_JA_COPY_PATH, repo_name, repo_name_ja, force)
 
 if !File.exists?(GITIGNORE_COPY_PATH)
 	File.symlink(GITIGNORE_FILE_PATH, GITIGNORE_COPY_PATH)
